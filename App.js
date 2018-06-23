@@ -1,26 +1,21 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableHighlight } from 'react-native';
+import { Actions, Router, Scene } from 'react-native-router-flux';
+import Home from './Components/Home';
+import History from './Components/History';
+import Donor from './Components/FindBloodDonor';
 
 export default class App extends React.Component {
-  
-  componentDidMount() {
-    Font.loadAsync({
-      'STSong': require('./STSong.TTF'),
-    });
-  }
-
 
   render() {
     return (
-      <View style={styles.container}>
-        <Image source={require("./donorMate.jpg")} style={styles.logo}/>
-        <Text style={styles.quote}>{`     "Every two seconds, \n                     someone need blood" \n\n                                       -Johnson & Johnson`}</Text>
-        <View style={styles.button}><Text style={styles.buttonText}>Donation History</Text></View>
-        <View style={styles.button}><Text style={styles.buttonText}>Find a Blood Bank</Text></View>
-        <View style={styles.button}><Text style={styles.buttonText}>Find a Blood Donor</Text></View>
-        <View style={styles.button}><Text style={styles.buttonText}>Blood Facts</Text></View>
-        <View style={styles.button}><Text style={styles.buttonText}>Profile</Text></View>
-      </View>
+      <Router navigationBarStyle={{ backgroundColor: '#990100'}}>
+        <Scene key="root">
+              <Scene key="home" component={ Home } title="Donor Mate"/>
+              <Scene key="History" component={History} />
+              <Scene key="Donor" component={Donor} title=""/>
+        </Scene>
+      </Router>
     );
   }
 }
@@ -29,8 +24,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#990100',
-    alignItems: 'center',
-    justifyContent: 'center',
+    // alignItems: 'center',
+    // justifyContent: 'center',
   },
   quote:{
     color:'#fff',
@@ -54,7 +49,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 1.0,
   },
   buttonText:{
-    fontFamily:'STSong',
     fontSize:18,
     marginLeft:'auto',
     marginRight:'auto',
