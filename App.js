@@ -2,6 +2,14 @@ import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 
 export default class App extends React.Component {
+  
+  componentDidMount() {
+    Font.loadAsync({
+      'STSong': require('./STSong.TTF'),
+    });
+  }
+
+
   render() {
     return (
       <View style={styles.container}>
@@ -31,7 +39,7 @@ const styles = StyleSheet.create({
   },
   logo:{
     width:130,
-    height:130
+    height:130,
   },
   button:{
     borderRadius:20,
@@ -46,7 +54,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 1.0,
   },
   buttonText:{
-    // fontFamily:'STSong',
+    fontFamily:'STSong',
     fontSize:18,
     marginLeft:'auto',
     marginRight:'auto',
